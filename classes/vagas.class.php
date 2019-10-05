@@ -1,5 +1,5 @@
 <?php
-class Anuncios {
+class Vagas {
 
 	public function getTotalAnuncios($filtros) {
 		global $pdo;
@@ -55,9 +55,9 @@ class Anuncios {
 
 		$sql = $pdo->prepare("SELECT
 			*,
-			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url,
-			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria
-			FROM anuncios WHERE ".implode(' AND ', $filtrostring)." ORDER BY id DESC LIMIT $offset, $perPage");
+			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = vagas.id limit 1) as url,
+			(select categorias.nome from categorias where categorias.id = vagas.id_categoria) as categoria
+			FROM vagas WHERE ".implode(' AND ', $filtrostring)." ORDER BY id DESC LIMIT $offset, $perPage");
 		
 		if(!empty($filtros['categoria'])) {
 			$sql->bindValue(':id_categoria', $filtros['categoria']);
@@ -87,7 +87,7 @@ class Anuncios {
 		$sql = $pdo->prepare("SELECT
 			*,
 			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url
-			FROM anuncios
+			FROM vagas
 			WHERE id_usuario = :id_usuario");
 		$sql->bindValue(":id_usuario", $_SESSION['cLogin']);
 		$sql->execute();
@@ -107,7 +107,7 @@ class Anuncios {
 			*,
 			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria,
 			(select usuarios.telefone from usuarios where usuarios.id = anuncios.id_usuario) as telefone
-		FROM anuncios WHERE id = :id");
+		FROM vagas WHERE id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 
@@ -131,7 +131,7 @@ class Anuncios {
 	public function addAnuncio($titulo, $categoria, $valor, $descricao, $estado) {
 		global $pdo;
 
-		$sql = $pdo->prepare("INSERT INTO anuncios SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado");
+		$sql = $pdo->prepare("INSERT INTO vagas SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado");
 		$sql->bindValue(":titulo", $titulo);
 		$sql->bindValue(":id_categoria", $categoria);
 		$sql->bindValue(":id_usuario", $_SESSION['cLogin']);
@@ -144,7 +144,7 @@ class Anuncios {
 	public function editAnuncio($titulo, $categoria, $valor, $descricao, $estado, $fotos, $id) {
 		global $pdo;
 
-		$sql = $pdo->prepare("UPDATE anuncios SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado WHERE id = :id");
+		$sql = $pdo->prepare("UPDATE vagas SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado WHERE id = :id");
 		$sql->bindValue(":titulo", $titulo);
 		$sql->bindValue(":id_categoria", $categoria);
 		$sql->bindValue(":id_usuario", $_SESSION['cLogin']);

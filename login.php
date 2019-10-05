@@ -21,6 +21,7 @@
 		}
 	}
 	?>
+	<div class="row">
 	<form method="POST">
 		<div class="form-group">
 			<label for="email">E-mail:</label>
@@ -32,6 +33,7 @@
 		</div>
 		<input type="submit" value="Fazer Login" class="btn btn-default" />
 	</form>
+	</div>
 
 </div>
 <?php require 'pages/footer.php'; ?>
