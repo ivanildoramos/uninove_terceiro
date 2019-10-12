@@ -7,6 +7,18 @@
 	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/script.js"></script>
+	<style>
+		.row{
+		    margin: auto;
+			align-items: center;
+			width: 25%px;
+		}
+		.jumbotron form{
+			width: 50%;
+			margin: auto;
+	
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -17,7 +29,7 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<?php if(isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])): ?>
-					<li><a href="vagas.php">Minhas Vagas</a></li>
+					<li><a href="vagas.php">Cadastrar</a></li>
 					<li><a href="sair.php">Sair</a></li>
 				<?php else: ?>
 					<li><a href="cadastrar.php">Cadastre-se</a></li>

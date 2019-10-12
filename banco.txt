@@ -1,0 +1,108 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: 06-Out-2019 às 23:31
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `site_vagas`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `nome` varchar(100) NOT NULL DEFAULT '',
+  `cep` varchar(20) NOT NULL DEFAULT '',
+  `rua` varchar(50) NOT NULL DEFAULT '',
+  `bairro` varchar(50) NOT NULL DEFAULT '',
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `cidade` varchar(100) NOT NULL DEFAULT '',
+  `senha` varchar(32) NOT NULL DEFAULT '',
+  `telefone` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `cep`, `rua`, `bairro`, `email`, `cidade`, `senha`, `telefone`) VALUES
+(2, 'cleriston', '', '', '', 'cleristonpnt5@gmail.com', '', '202cb962ac59075b964b07152d234b70', '9999999'),
+(3, 'analise e desenvolvimento de sistemas', '', '', '', 'kelkosta@outlook.com', '', '827ccb0eea8a706c4c34a16891f84e7b', '99999'),
+(4, 'Kel', '', '', '', 'kelkosta@gmail.com', '', 'e10adc3949ba59abbe56e057f20f883e', '9996658'),
+(5, 'Antonio', '', '', '', 'antonio@outlook.com', '', '827ccb0eea8a706c4c34a16891f84e7b', '5555555'),
+(6, 'Marcos', '08536-450', 'Rua Ercindo Augusto Batistella', 'Parque Santa Laura', 'marcos@outlook.com', 'Ferraz de Vasconcelos', '827ccb0eea8a706c4c34a16891f84e7b', '1146743870');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vagas`
+--
+
+CREATE TABLE `vagas` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `titulo` varchar(100) DEFAULT NULL,
+  `descricao` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `vagas`
+--
+
+INSERT INTO `vagas` (`id`, `titulo`, `descricao`) VALUES
+(13, 'Programador', 'Experiencia co  desenvolvimento de softuares'),
+(14, 'Secretario', 'Experiencia em escritorio'),
+(15, 'Programador', 'Solidos conhecimentos em php');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vagas`
+--
+ALTER TABLE `vagas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `vagas`
+--
+ALTER TABLE `vagas`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
