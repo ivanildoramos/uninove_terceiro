@@ -1,5 +1,8 @@
 <?php
-session_start();
-unset($_SESSION['cLogin']);
-header("Location: ./login.php");
+  require 'classes/usuarios.class.php';
+  $u = new Usuarios();
+
+  if ($u->sair()) {
+      header("Location: ./login.php");
+  }
 ?>
