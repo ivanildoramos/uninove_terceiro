@@ -1,17 +1,23 @@
 <?php 
   require 'pages/header.php';
 
-  if(isset($_GET['id']) && !empty($_GET['id'])) {
-     $usuario->apagar($_GET['id']);
+  echo "<div class='container'>";
+
+  if ($usuario->estou_logado()) {
+      $resposta = $usuario->getUsuarios();
+	  
+	  if (isset($_GET['acao']) && isset($_GET['acao']) == 'excluir'){ 
+		  if(isset($_GET['id']) && isset($_GET['email']) ) {
+			if ($_SESSION['cLogin'] == $_GET['email']){
+                echo "<div class='alert alert-danger'>Você não pode excluir a si próprio</div>";
+			} else {
+			   $usuario->apagar($_GET['id']);
+			}
+		  }
+	  }
   }
   
-  $resposta = $usuario->getUsuarios();
-
 ?>
-
-
-<div class="container">
-
     
     <?php if($usuario->estou_logado()): ?>
 			<div class="row">
@@ -38,7 +44,7 @@
 			  <td><?php echo $usuario['email']; ?></td>
 			  <td>
 				<button type="button" class="btn btn-info"><a href="editar.php?id=<?php echo $usuario['id'];?>">Editar</a></button>
-				<button type="button" class="btn btn-danger"><a href="index.php?id=<?php echo $usuario['id'];?>">Excluir</a></button>
+				<button type="button" class="btn btn-danger"><a href="index.php?id=<?php echo $usuario['id'];?>&email=<?php echo $usuario['email'];?>&acao=excluir">Excluir</a></button>
 			  </td>
 			</tr>
 		 <?php endforeach; ?>
