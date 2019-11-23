@@ -2,13 +2,11 @@
 <div class="container">
 	<h1>Login</h1>
 	<?php
-	require 'classes/usuarios.class.php';
-	$u = new Usuarios();
 	if(isset($_POST['email']) && !empty($_POST['email'])) {
 		$email = addslashes($_POST['email']);
 		$senha = $_POST['senha'];
 
-		if($u->login($email, $senha)) {
+		if($usuario->login($email, $senha)) {
 			?>
 			<script type="text/javascript">window.location.href="./";</script>
 			<?php
