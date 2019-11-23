@@ -1,9 +1,7 @@
 <?php require 'pages/header.php'; ?>
+
 <div class="container">
-	
 	<?php
-	require 'classes/usuarios.class.php';
-	$u = new Usuarios();
 
 	if(isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$nome = addslashes($_POST['nome']);
@@ -16,7 +14,7 @@
 		$telefone = addslashes($_POST['telefone']);
 
 		if(!empty($nome) && !empty($email) && !empty($senha)) {
-			if($u->cadastrar($nome, $email, $senha,$cep,$rua,$bairro,$cidade , $telefone)) {
+			if($usuario->cadastrar($nome, $email, $senha,$cep,$rua,$bairro,$cidade , $telefone)) {
 				?>
 				<div class="alert alert-success">
 					<strong>Parabéns!</strong> Cadastrado com sucesso. <a href="login.php" class="alert-link">Faça o login agora</a>
