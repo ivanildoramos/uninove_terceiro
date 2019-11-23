@@ -1,4 +1,9 @@
-<?php require 'config.php'; ?>
+<?php 
+   require 'config.php';
+   require 'classes/usuarios.class.php';
+   $usuario = new Usuarios();
+?>
+
 <html>
 <head>
 	<title>Site de Vagas</title>
@@ -28,7 +33,7 @@
 				<a href="./" class="navbar-brand">Vagas</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<?php if(isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])): ?>
+				<?php if($usuario->estou_logado()): ?>
 					<li><a href="cadastrar.php">Cadastrar</a></li>
 					<li><a href="sair.php">Sair</a></li>
 				<?php else: ?>

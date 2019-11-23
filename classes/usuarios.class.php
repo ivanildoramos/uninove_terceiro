@@ -72,6 +72,14 @@ class Usuarios {
 		return true;
 	}
 
+    public function estou_logado() {
+		// Verifica se o usuário esta autenticado no sistema
+		// verificando se existe um email guardado na sessão
+        if(isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])){
+    		return true;
+		}
+	}
+	
 	public function getIdUsuario($id){
 
 
