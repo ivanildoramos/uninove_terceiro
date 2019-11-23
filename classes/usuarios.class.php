@@ -51,14 +51,14 @@ class Usuarios {
 	public function login($email, $senha) {
 		global $pdo;
 
-		$sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND senha = :senha");
+		$sql = $pdo->prepare("SELECT email FROM usuarios WHERE email = :email AND senha = :senha");
 		$sql->bindValue(":email", $email);
 		$sql->bindValue(":senha", $senha);
 		$sql->execute();
 
 		if($sql->rowCount() > 0) {
 			$dado = $sql->fetch();
-			$_SESSION['cLogin'] = $dado['id'];
+			$_SESSION['cLogin'] = $dado['email'];
 			return true;
 		} else {
 			return false;
@@ -66,6 +66,11 @@ class Usuarios {
 
 	}
 
+    public function sair() {
+		session_start();
+		unset($_SESSION['cLogin']);
+		return true;
+	}
 
 	public function getIdUsuario($id){
 
