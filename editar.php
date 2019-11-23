@@ -1,10 +1,5 @@
-<?php require 'pages/header.php'; ?>
-<div class="container">
-	
-	<?php
-	require 'classes/usuarios.class.php';
-
-		
+<?php
+       require 'pages/header.php';
 		 if(isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$nome = addslashes($_POST['nome']);
 		$cep = addslashes($_POST['email']);
@@ -14,21 +9,20 @@
 		$email = addslashes($_POST['email']);
 		$senha = $_POST['senha'];
 		$telefone = addslashes($_POST['telefone']);
-		$u = new Usuarios();
-	    $u->atualizarUsuario($nome, $email, $senha,$cep, $rua, $bairro, $cidade, $telefone, $_POST['id']);
+	    $usuario->atualizarUsuario($nome, $email, $senha,$cep, $rua, $bairro, $cidade, $telefone, $_POST['id']);
 	}
 		
 	  
 		?>
+<div class="container">
 
 
 	
 	<div class="row">
 
 		<?php 
-		$u = new Usuarios();
 	
-		$resp = $u->getIdUsuario($_GET['id']);
+		$resp = $usuario->getIdUsuario($_GET['id']);
 
 		 ?>
 		<h1>Cadastre-se</h1>
